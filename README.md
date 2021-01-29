@@ -43,14 +43,14 @@ OCR will run and save the results in a file called ocr_output.txt.
 ## Preprocessing
 Prior to using Namsel, documents in the form of PDFs or images need to be preprocessed. Preprocessing typically involves cleaning up images and putting them in a format Namsel expects.
 
-###Scanning documents
+### Scanning documents
 If you are scanning the documents to be OCR'd yourself, here are some tips for improving chances of getting high quality OCR results:
 - Scan in black and white
 - Scan at a relatively high resolution (400-600 dpi)
 - Utilize the scanner's software to align and crop the pages. If your scanner software supports it, deskewing the page and removing empty borders and images can save time later on in the OCR process. (Scantailor, which is mentioned below, won't remove images, but will deskew (rotate) the page and remove empty borders).
 - Save images in TIFF format with sensible name (e.g. a sequences of numbers 001.tif, 002.tif, etc)
 
-###Preparing images from PDFs
+### Preparing images from PDFs
 If your original document is in PDF format, you will need to convert the individual PDF pages to black and white or grayscale jpg, tif, or png images. Black and white tif images are Namsel's preferred format.
 
 There are a variety of tools for converting a PDF to images. The "gs" command from the Ghostscript project is one.
@@ -63,7 +63,7 @@ $ gs -r600x600 -sDEVICE=tiffg4 -sOutputFile=ocr_%04d.tif -dBATCH -dNOPAUSE mytib
 
 This will convert all the pages in the pdf to tiff using the "Group 4" compression, which is the most compact form of TIFF compression for black and white images. If your pdf is in grayscale, replace "tiffg4" with "tiffgray." Images will be unpacked at the location where the bash script or gs is run unless you specify otherwise.
 
-###Preparing images using scantailor
+### Preparing images using scantailor
 [Scantailor](https://github.com/scantailor/scantailor) is an open source project for cleaning up scanned documents and preparing them for OCR. Essentially, it performs 5 core operations:
 - Page splitting
 - Deskewing
